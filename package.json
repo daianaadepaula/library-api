@@ -15,12 +15,12 @@
   "license": "MIT",
   "description": "Library Management API",
   "dependencies": {
+    "@prisma/client": "^6.8.2",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pg": "^8.16.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.7",
-    "sequelize-typescript": "^2.1.6",
+    "prisma": "^6.8.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
@@ -52,4 +52,3 @@
     "typescript": "^5.8.3"
   }
 }
-

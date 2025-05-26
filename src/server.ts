@@ -8,6 +8,6 @@ const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
 	console.log(`🚀 Server running on port ${PORT}`);
-	console.log(`📚 Documentação Swagger: http://localhost:${PORT}/api/docs`);
+	console.log(`📚 Swagger Documentation: http://localhost:${PORT}/api/docs`);
 	connectDB();
 });
