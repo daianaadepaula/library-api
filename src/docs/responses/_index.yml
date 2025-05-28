@@ -1,0 +1,52 @@
+NoContent:
+  description: Successful request, no content to return
+
+NotFound:
+  description: Resource not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+BadRequest:
+  description: Malformed request
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+Unauthorized:
+  description: Unauthorized
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+Forbidden:
+  description: Forbidden
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+InternalServerError:
+  description: Internal server error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string

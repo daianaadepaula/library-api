@@ -1,0 +1,8 @@
+/users:
+  $ref: './user.paths.yml'
+/users/{id}:
+  $ref: './userId.paths.yml'
+# /books:
+#   $ref: './book.paths.yml'
+# /loans:
+#   $ref: './loan.paths.yml'

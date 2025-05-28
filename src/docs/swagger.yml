@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: Library API
+  version: 1.0.0
+  description: Library Management API
+  contact:
+    name: Daiana de Paula
+    url: https://github.com/daianaadepaula
+servers:
+  - url: http://localhost:3001/api
+    description: Servidor local
+
+# Referencia os arquivos externos
+paths:
+  $ref: './paths/_index.yml'
+
+components:
+  schemas:
+    $ref: './schemas/_index.yml'
+  responses:
+    $ref: './responses/_index.yml'
+  securitySchemes:
+    $ref: './security/_index.yml'
+
+tags:
+  - name: Users
+    description: Operações relacionadas a usuários
+  - name: Books
+    description: Operações relacionadas a livros
+  - name: Loans
+    description: Operações relacionadas a empréstimos

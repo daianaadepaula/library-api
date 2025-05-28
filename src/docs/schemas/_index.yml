@@ -1,0 +1,6 @@
+User:
+  $ref: './user.schema.yml'
+# Book:
+#   $ref: './book.schema.yml'
+# Loan:
+#   $ref: './loan.schema.yml'
