@@ -26,5 +26,7 @@ post:
       $ref: '../responses/user.response.yml#/UserCreated'
     '400':
       $ref: '../responses/_index.yml#/BadRequest'
+    '409':
+      $ref: '../responses/_index.yml#/Conflict'
     '500':
       $ref: '../responses/_index.yml#/InternalServerError'

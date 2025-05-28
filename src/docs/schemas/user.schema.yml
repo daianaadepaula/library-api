@@ -1,8 +1,5 @@
 type: object
 properties:
-  id:
-    type: string
-    format: uuid
   name:
     type: string
     format: name
@@ -12,14 +9,7 @@ properties:
   password:
     type: string
     format: password
-  createdAt:
-    type: string
-    format: date-time
-  updatedAt:
-    type: string
-    format: date-time
 required:
   - name
   - email
   - password
-  
