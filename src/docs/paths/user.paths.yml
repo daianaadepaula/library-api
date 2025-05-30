@@ -4,6 +4,8 @@ get:
     - Users
   summary: Retrieve all users
   description: Get a list of all registered users.
+  security:
+    - bearerAuth: []
   responses:
     '200':
       $ref: '../responses/user.response.yml#/UserList'
@@ -20,7 +22,8 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../schemas/user.schema.yml'
+          $ref: '../schemas/user.schema.yml#/components/schemas'
+
   responses:
     '201':
       $ref: '../responses/user.response.yml#/UserCreated'

@@ -1,0 +1,14 @@
+post:
+  tags:
+    - Auth
+  summary: Logs out current logged in user session
+  description: Invalidate refresh token and clear session.
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      $ref: '../responses/auth.response.yml#/Logout'
+    '401':
+      $ref: '../responses/_index.yml#/Unauthorized'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'

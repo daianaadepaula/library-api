@@ -1,6 +1,15 @@
+# ==== AUTH ====
+SignupAuthSchema:
+  $ref: './auth.schema.yml#/components/schemas/SignupAuthSchema'
+LoginAuthSchema:
+  $ref: './auth.schema.yml#/components/schemas/LoginAuthSchema'
+
+# ==== USERS ====
 User:
-  $ref: './user.schema.yml'
+  $ref: './user.schema.yml#/components/schemas'
+# ==== BOOKS ====
 # Book:
 #   $ref: './book.schema.yml'
+# ==== LOANS ====
 # Loan:
 #   $ref: './loan.schema.yml'

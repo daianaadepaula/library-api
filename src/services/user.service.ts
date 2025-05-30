@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto';
 import { AppError } from '../middlewares/error.middleware';
 import { UserRepository } from '../repositories/user.repository';
@@ -11,14 +12,20 @@ export const UserService = {
 
   create: async (data: CreateUserDTO) => {
     const existingUser = await userRepo.findByEmail(data.email);
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+
     if (existingUser) {
       throw new AppError('Email already exists', 409);
     }
-    return userRepo.create(data);
+    return userRepo.create({
+      name: data.name,
+      email: data.email,
+      password: hashedPassword,
+    });
   },
 
   update: async (id: string, data: UpdateUserDTO) => {
-    if (data.email) { 
+    if (data.email) {
       const existingUser = await userRepo.findByEmail(data.email);
       if (existingUser && existingUser.id !== id) {
         throw new AppError('Email already exists', 409);
@@ -33,5 +40,13 @@ export const UserService = {
       throw new AppError('User not found', 404);
     }
     return userRepo.delete(id);
+  },
+
+  findByEmail: async (email: string) => {
+    return await userRepo.findByEmail(email);
+  },
+
+  validatePassword: async (plain: string, hash: string) => {
+    return await bcrypt.compare(plain, hash);
   },
 };

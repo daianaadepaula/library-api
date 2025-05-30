@@ -1,11 +1,18 @@
 openapi: 3.0.0
 info:
-  title: Library API
+  title: Library Management API
   version: 1.0.0
-  description: Library Management API
+  description: Library Management API provides a set of endpoints to manage users, books, and book loans, as well as handle user authentication. It enables operations such as user registration and login, book catalog management, and tracking of loan activities within the library system.
   contact:
     name: Daiana de Paula
     url: https://github.com/daianaadepaula
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+security:
+  - bearerAuth: []
+
 servers:
   - url: http://localhost:3001/api
     description: Servidor local
@@ -23,9 +30,11 @@ components:
     $ref: './security/_index.yml'
 
 tags:
+  - name: Auth
+    description: Endpoints for handling user authentication, such as login, registration, and token management.
   - name: Users
-    description: Operações relacionadas a usuários
+    description: Endpoints for managing user data, including creation, retrieval, updating, and deletion of user accounts.
   - name: Books
-    description: Operações relacionadas a livros
+    description: Endpoints for managing book records, including adding, updating, listing, and deleting books.
   - name: Loans
-    description: Operações relacionadas a empréstimos
+    description: Endpoints for handling book loan operations, such as creating, tracking, and returning book loans.

@@ -1,15 +1,20 @@
-type: object
-properties:
-  name:
-    type: string
-    format: name
-  email:
-    type: string
-    format: email
-  password:
-    type: string
-    format: password
-required:
-  - name
-  - email
-  - password
+components:
+  schemas:
+    type: object
+    required:
+      - name
+      - email
+      - password
+    properties:
+      name:
+        type: string
+        format: name
+        example: 'John Doe'
+      email:
+        type: string
+        format: email
+        example: 'john@example.com'
+      password:
+        type: string
+        format: password
+        example: 'Password123'

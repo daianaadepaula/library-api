@@ -1,0 +1,40 @@
+components:
+  schemas:
+    SignupAuthSchema:
+      type: object
+      required:
+        - name
+        - email
+        - password
+        - confirmPassword
+      properties:
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          format: password
+          example: Password123
+        confirmPassword:
+          type: string
+          format: password
+          example: Password123
+
+    LoginAuthSchema:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          format: password
+          example: Password123

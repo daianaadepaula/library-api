@@ -1,8 +1,20 @@
+# ==== AUTH ====
+/auth/signup:
+  $ref: './auth.signup.yml'
+/auth/login:
+  $ref: './auth.login.yml'
+/auth/logout:
+  $ref: './auth.logout.yml'
+
+# ==== USERS ====
 /users:
   $ref: './user.paths.yml'
 /users/{id}:
   $ref: './userId.paths.yml'
+# ==== BOOKS ====
 # /books:
 #   $ref: './book.paths.yml'
+
+# ==== LOANS ====
 # /loans:
 #   $ref: './loan.paths.yml'
