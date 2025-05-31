@@ -3,9 +3,7 @@ import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto';
 import { AppError } from '../middlewares/error.middleware';
 import { UserRepository } from '../repositories/user.repository';
 
-const userRepo = UserRepository();
-
-export const UserService = {
+export const UserService = (userRepo = UserRepository()) => ({
   getAll: () => userRepo.findAll(),
 
   getById: (id: string) => userRepo.findById(id),
@@ -49,4 +47,4 @@ export const UserService = {
   validatePassword: async (plain: string, hash: string) => {
     return await bcrypt.compare(plain, hash);
   },
-};
+});

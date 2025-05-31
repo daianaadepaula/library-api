@@ -7,8 +7,8 @@ info:
     name: Daiana de Paula
     url: https://github.com/daianaadepaula
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
+    name: MIT License
+    url: https://github.com/daianaadepaula/library-api/blob/main/LICENSE
 
 security:
   - bearerAuth: []
