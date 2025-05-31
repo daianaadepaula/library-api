@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   service-pg:
@@ -6,7 +6,7 @@ services:
     container_name: library_postgres
     restart: always
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       POSTGRES_DB: library_db
       POSTGRES_USER: postgres

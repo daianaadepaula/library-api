@@ -1,0 +1,74 @@
+NoContent:
+  description: Successful request, no content to return
+
+NotFound:
+  description: Resource not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: boolean
+            example: true
+          message:
+            type: string
+            example: Not found
+
+Conflict:
+  description: Conflict - resource already exists
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: boolean
+            example: true
+          message:
+            type: string
+            example: Email already exists
+
+BadRequest:
+  description: Malformed request
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+Unauthorized:
+  description: Unauthorized
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+Forbidden:
+  description: Forbidden
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: boolean
+            example: true
+          message:
+            type: string
+            example: Not forbidden
+
+InternalServerError:
+  description: Internal server error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string

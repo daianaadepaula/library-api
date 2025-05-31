@@ -1,0 +1,35 @@
+/users:
+get:
+  tags:
+    - Users
+  summary: Retrieve all users
+  description: Get a list of all registered users.
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      $ref: '../responses/user.response.yml#/UserList'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'
+
+post:
+  tags:
+    - Users
+  summary: Create a new user
+  description: Register a new user in the system.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/user.schema.yml#/components/schemas'
+
+  responses:
+    '201':
+      $ref: '../responses/user.response.yml#/UserCreated'
+    '400':
+      $ref: '../responses/_index.yml#/BadRequest'
+    '409':
+      $ref: '../responses/_index.yml#/Conflict'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'

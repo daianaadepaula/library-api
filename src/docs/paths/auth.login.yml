@@ -1,0 +1,21 @@
+post:
+  tags:
+    - Auth
+  summary: Login user
+  description: Authenticate and return access and refresh tokens.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/auth.schema.yml#/components/schemas/LoginAuthSchema'
+
+  responses:
+    '200':
+      $ref: '../responses/auth.response.yml#/Login'
+    '400':
+      $ref: '../responses/_index.yml#/BadRequest'
+    '401':
+      $ref: '../responses/_index.yml#/Unauthorized'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'

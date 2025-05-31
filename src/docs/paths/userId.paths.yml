@@ -1,0 +1,82 @@
+/users/{id}:
+get:
+  tags:
+    - Users
+  summary: Get a user by ID
+  description: Retrieve a specific user by their unique ID.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      $ref: '../responses/user.response.yml#/UserCreated'
+    '404':
+      $ref: '../responses/_index.yml#/NotFound'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'
+
+put:
+  tags:
+    - Users
+  summary: Update a user by ID
+  description: Update user information by providing their ID and new data.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/user.schema.yml#/components/schemas'
+  responses:
+    '200':
+      $ref: '../responses/user.response.yml#/UserUpdated'
+    '404':
+      $ref: '../responses/_index.yml#/NotFound'
+    '400':
+      $ref: '../responses/_index.yml#/BadRequest'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'
+
+delete:
+  tags:
+    - Users
+  summary: Delete a user by ID
+  description: Remove a user from the system using their ID.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: User deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: User deleted successfully
+    '404':
+      $ref: '../responses/_index.yml#/NotFound'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'

@@ -1,0 +1,21 @@
+post:
+  tags:
+    - Auth
+  summary: Signup
+  description: Register a new user.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/auth.schema.yml#/components/schemas/SignupAuthSchema'
+
+  responses:
+    '201':
+      $ref: '../responses/auth.response.yml#/Signup'
+    '400':
+      $ref: '../responses/_index.yml#/BadRequest'
+    '409':
+      $ref: '../responses/_index.yml#/Conflict'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'
