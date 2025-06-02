@@ -17,7 +17,7 @@ export const UserService = (userRepo = UserRepository()) => ({
     }
     return userRepo.create({
       name: data.name,
-      email: data.email,
+      email: data.email.toLowerCase().trim(),
       password: hashedPassword,
     });
   },
@@ -28,6 +28,9 @@ export const UserService = (userRepo = UserRepository()) => ({
       if (existingUser && existingUser.id !== id) {
         throw new AppError('Email already exists', 409);
       }
+    }
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
     }
     return userRepo.update(id, data);
   },

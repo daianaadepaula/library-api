@@ -1,0 +1,22 @@
+/users/search:
+get:
+  tags:
+    - Users
+  summary: Get a user by email
+  description: Retrieve a specific user using query param `email`.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+  responses:
+    '200':
+      $ref: '../responses/user.response.yml#/UserCreated'
+    '404':
+      $ref: '../responses/_index.yml#/NotFound'
+    '500':
+      $ref: '../responses/_index.yml#/InternalServerError'

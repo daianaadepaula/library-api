@@ -9,6 +9,8 @@
 # ==== USERS ====
 /users:
   $ref: './user.paths.yml'
+/users/search:
+  $ref: './userEmail.paths.yml'
 /users/{id}:
   $ref: './userId.paths.yml'
 # ==== BOOKS ====
