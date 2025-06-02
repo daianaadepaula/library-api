@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
+import { emailSchema } from '../schemas/userFieldSchemas';
 
 const userService = UserService();
 
@@ -19,6 +20,28 @@ export const UserController = {
     }
     res.json(user);
     return;
+  },
+
+  async getByEmail(req: Request, res: Response) {
+    const { email } = req.query;
+
+    if (typeof email !== 'string') {
+      res.status(400).json({ message: 'Email must be a string' });
+      return;
+    }
+    try {
+      const validateEmail = emailSchema.parse(email);
+      const user = await userService.findByEmail(validateEmail);
+      if (!user) {
+        res.status(404).json({ message: 'User not found' });
+        return;
+      }
+      res.json(user);
+      return;
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: 'Invalid email format' });
+    }
   },
 
   async create(req: Request, res: Response) {

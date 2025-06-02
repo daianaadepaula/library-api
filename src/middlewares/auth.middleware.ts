@@ -1,37 +1,28 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { UserRepository } from '../repositories/user.repository';
+import { AuthService } from '../services/auth.service';
+import { JwtPayload } from '../types/auth';
 
 export async function authenticate(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).json({ message: 'Missing or malformed token' });
+    return;
+  }
+
+  const token = authHeader.split(' ')[1];
+  console.log('🛡️ Token recebido:', token);
+
   try {
-    const authHeader = req.headers.authorization;
-    const token = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
-
-    if (!token) {
-      res.status(401).json({ message: 'Unauthorized - No token provided' });
-      return;
+    const decoded = AuthService.verifyAccessToken(token);
+    if (typeof decoded === 'string') {
+      throw new Error('Invalid token payload');
     }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY || 'jwt_secret_key');
-
-    if (typeof decoded === 'string' || !('id' in decoded)) {
-      res.status(401).json({ message: 'Unauthorized - Invalid token payload' });
-      return;
-    }
-
-    const userRepo = UserRepository();
-    const user = await userRepo.findById((decoded as JwtPayload).id);
-
-    if (!user) {
-      res.status(401).json({ message: 'Unauthorized - User not found' });
-      return;
-    }
-
-    req.user = user;
+    req.user = decoded as JwtPayload;
     next();
   } catch (error) {
-    console.error('Error authenticating:', error);
-    res.status(401).json({ message: 'Unauthorized' });
+    console.error('Authentication error:', error);
+    res.status(401).json({ message: 'Invalid token' });
     return;
   }
 }

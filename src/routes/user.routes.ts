@@ -8,6 +8,7 @@ const router = Router();
 
 router.get('/users', authenticate, UserController.getAll);
 router.get('/users/:id', authenticate, UserController.getById);
+router.get('/users/search', authenticate, UserController.getByEmail);
 router.post('/users', validate(createUserSchema), UserController.create);
 router.put('/users/:id', authenticate, validate(updateUserSchema), UserController.update);
 router.delete('/users/:id', authenticate, UserController.remove);
